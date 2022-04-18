@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ItemController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
+//authinticate routes
+Route::middleware('auth:api')->group( function () {
+    Route::get('items', [ItemController::class, 'index']);
+    Route::get('single-item/{id}', [ItemController::class, 'singleitem']);
+
+});
