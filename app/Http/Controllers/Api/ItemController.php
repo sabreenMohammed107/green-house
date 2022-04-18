@@ -8,7 +8,7 @@ use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ItemController extends Controller
+class ItemController extends BaseController
 {
     //
 
