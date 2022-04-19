@@ -42,7 +42,7 @@ class CartController extends BaseController
         ]);
 //exist product
         $user = Auth::user();
-        $exist = Order::where('status', "=", 0)->where('user_id', $user->id)->first();
+        $exist = Order::where('status_id', "=", 0)->where('user_id', $user->id)->first();
         if ($exist) {
             $row = Order_item::where('order_id', $exist->id)->where('item_id', $request->item_id)->first();
             if ($row) {
