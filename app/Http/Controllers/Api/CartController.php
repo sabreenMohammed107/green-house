@@ -35,6 +35,7 @@ class CartController extends BaseController
 
     public function addItem(Request $request)
     {
+        dd($request->all());
         $validator =Validator::make($request->all(), [
             'item_id' => 'required',
 
