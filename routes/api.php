@@ -30,7 +30,7 @@ Route::middleware('auth:api')->group( function () {
     Route::get('items', [ItemController::class, 'index']);
     Route::get('single-item/{id}', [ItemController::class, 'singleitem']);
 //cart
-Route::get('add-to-cart', [CartController::class, 'addItem']);
+Route::post('add-to-cart', [CartController::class, 'addItem']);
 Route::get('show-cart', [CartController::class, 'index']);
 Route::get('add-qty/{id}',  [CartController::class,'AddQuantity']);
 Route::get('sub-qty/{id}',  [CartController::class,'SubstractQuantity']);
