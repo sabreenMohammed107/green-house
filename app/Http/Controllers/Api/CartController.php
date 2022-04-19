@@ -6,7 +6,7 @@ use App\Http\Resources\OrderItemsResource;
 use App\Models\Order;
 use App\Models\Order_item;
 use Carbon\Carbon;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Illuminate\Support\Facades\DB;
@@ -35,11 +35,11 @@ class CartController extends BaseController
 
     public function addItem(Request $request)
     {
-        // dd($request->all());
-        // $validator =Validator::make($request->all(), [
-        //     'item_id' => 'required',
 
-        // ]);
+        $validator =Validator::make($request->all(), [
+            'item_id' => 'required',
+
+        ]);
 //exist product
         $user = Auth::user();
         $exist = Order::where('status', "=", 0)->where('user_id', $user->id)->first();
@@ -85,9 +85,9 @@ try
             return $this->sendError($e->getMessage(), 'Error happens!!');
         }
         }
-        // if ($validator->fails()) {
-        //     return $this->convertErrorsToString($validator->messages());
-        // }
+        if ($validator->fails()) {
+            return $this->convertErrorsToString($validator->messages());
+        }
 
 
     }
