@@ -35,11 +35,11 @@ class CartController extends BaseController
 
     public function addItem(Request $request)
     {
-        dd($request->all());
-        $validator =Validator::make($request->all(), [
-            'item_id' => 'required',
+        // dd($request->all());
+        // $validator =Validator::make($request->all(), [
+        //     'item_id' => 'required',
 
-        ]);
+        // ]);
 //exist product
         $user = Auth::user();
         $exist = Order::where('status', "=", 0)->where('user_id', $user->id)->first();
@@ -85,9 +85,9 @@ try
             return $this->sendError($e->getMessage(), 'Error happens!!');
         }
         }
-        if ($validator->fails()) {
-            return $this->convertErrorsToString($validator->messages());
-        }
+        // if ($validator->fails()) {
+        //     return $this->convertErrorsToString($validator->messages());
+        // }
 
 
     }
