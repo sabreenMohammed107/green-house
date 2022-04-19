@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\ItemController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +26,12 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 //authinticate routes
 Route::middleware('auth:api')->group( function () {
+    //item
     Route::get('items', [ItemController::class, 'index']);
     Route::get('single-item/{id}', [ItemController::class, 'singleitem']);
-
+//cart
+Route::get('show-cart', [CartController::class, 'index']);
+Route::get('add-qty/{id}',  [CartController::class,'AddQuantity']);
+Route::get('sub-qty/{id}',  [CartController::class,'SubstractQuantity']);
+Route::get('place-order',  [CartController::class,'placeOrder']);
 });
