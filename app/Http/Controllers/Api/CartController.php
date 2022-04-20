@@ -19,7 +19,7 @@ class CartController extends BaseController
     {
         if (Auth::guard('api')->check()) {
             $user = Auth::guard('api')->user();
-            $myCart = Order::where('user_id', $user->id)->where('status', 1)->first();
+            $myCart = Order::where('user_id', $user->id)->where('status_id', 1)->first();
             if ($myCart) {
                 $items = Order_item::where('order_id', $myCart->id)->get();
                 return $this->sendResponse(OrderItemsResource::collection($items), 'get all Items');
