@@ -108,6 +108,13 @@ try
 
     public function placeOrder(Request $request)
     {
+        $validator =Validator::make($request->all(), [
+            'order_id' => 'required',
 
+        ]);
+
+        $row = Order::where('id', $request->order_id)->first();
+        $row->update(['status_id' => 2]);
+        return $this->sendResponse($row, ' Order is waitpoints.');
     }
 }

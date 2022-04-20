@@ -34,5 +34,5 @@ Route::post('add-to-cart', [CartController::class, 'addItem']);
 Route::get('show-cart', [CartController::class, 'index']);
 Route::get('add-qty/{id}',  [CartController::class,'AddQuantity']);
 Route::get('sub-qty/{id}',  [CartController::class,'SubstractQuantity']);
-Route::get('place-order',  [CartController::class,'placeOrder']);
+Route::post('place-order',  [CartController::class,'placeOrder']);
 });
