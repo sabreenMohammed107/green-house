@@ -24,7 +24,7 @@ class CartController extends BaseController
                 $items = Order_item::where('order_id', $myCart->id)->get();
                 return $this->sendResponse(OrderItemsResource::collection($items), 'get all Items');
             } else {
-                return $this->sendError('some thing error in Cart');
+                return $this->sendError('some thing error in Cart/ cart not pending');
             }
 
         } else {
