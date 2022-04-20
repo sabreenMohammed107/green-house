@@ -119,7 +119,7 @@ try
             return $this->sendResponse($row, ' Order is waitpoints.');
         }else{
 
-            return $this->sendError($e->getMessage(), 'Error Order Not Pending!!');
+            return $this->sendError(null, 'Error Order Not Pending!!');
         }
 
     }
