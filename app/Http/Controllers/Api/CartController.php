@@ -114,7 +114,13 @@ try
         ]);
 
         $row = Order::where('id', $request->order_id)->first();
-        $row->update(['status_id' => 2]);
-        return $this->sendResponse($row, ' Order is waitpoints.');
+        if($row){
+            $row->update(['status_id' => 2]);
+            return $this->sendResponse($row, ' Order is waitpoints.');
+        }else{
+
+            return $this->sendError($e->getMessage(), 'Error Order Not Pending!!');
+        }
+
     }
 }
