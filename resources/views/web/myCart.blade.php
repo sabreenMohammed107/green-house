@@ -114,7 +114,7 @@
 
 
                     },
-                    url: "{{ url('addQty/fetch') }}",
+                    url: "addQty/fetch",
 
                     success: function(data) {
                         alert("vcv"+ data)
@@ -143,7 +143,7 @@ alert("vv"+ error)
 
 
                     },
-                    url: "{{ url('subQty/fetch') }}",
+                    url: "subQty/fetch",
 
                     success: function(data) {
 
