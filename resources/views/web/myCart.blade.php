@@ -114,7 +114,8 @@
 
 
                     },
-                    url: "/addQty/fetch/",
+                    url: "/addQty/fetch",
+
 
                     success: function(data) {
                         alert("vcv"+ data)
@@ -143,8 +144,7 @@ alert("vv"+ error)
 
 
                     },
-                    url: "/subQty/fetch/",
-
+                    url: "/subQty/fetch",
                     success: function(data) {
 
                         $('#rows').html(data);
