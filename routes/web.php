@@ -96,7 +96,7 @@ Route::resource('/my-items', MyItemsController::class);
 Route::get('items-cart/{id}',  [MyItemsController::class,'cart'])->name('items-cart');
 
 //point
-Route::get('/my-points', [MyPointControllerr::class,'index']);
+Route::get('/my-points', [MyPointController::class,'index']);
 //get-point
 Route::get('get-point/{id}',  [MyPointController::class,'getPoint'])->name('get-point');
 
