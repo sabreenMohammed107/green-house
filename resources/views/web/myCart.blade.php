@@ -117,7 +117,7 @@
                     url: "{{ url('addQty/fetch') }}",
 
                     success: function(data) {
-
+                        alert("vcv"+ data)
                         $('#rows').html(data);
 
                         console.log(rowSS);
@@ -126,7 +126,7 @@
 
                     error: function(request, status, error) {
 
-
+alert("vv"+ error)
                     }
                 });
     }

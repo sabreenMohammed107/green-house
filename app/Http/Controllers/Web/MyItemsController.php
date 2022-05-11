@@ -144,7 +144,7 @@ class MyItemsController extends Controller
             return redirect()->back()->with('flash_success', 'تم الحذف بنجاح !');
 
         } catch (QueryException $q) {
-            return redirect()->back()->withInput()->with('flash_danger', $q->getMessage());
+            return redirect()->back()->withInput()->with('flash_danger','this Item Related with another tables ');
 
             // return redirect()->back()->with('flash_danger', 'هذه القضية مربوطه بجدول اخر ..لا يمكن المسح');
         }
