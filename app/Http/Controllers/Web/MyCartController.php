@@ -35,7 +35,7 @@ class MyCartController extends Controller
 
     public function addQty(Request $req)
     {
-        dd($req->item_id);
+        // dd($req->item_id);
 
         if ($req->ajax()) {
             $item_id = $req->item_id;

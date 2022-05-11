@@ -105,7 +105,7 @@
     function plusing(id){
         var item_id=$('#cart'+id).val();
 
-
+        var ajaxURL = '{{ route('addQty/fetch') }}';
         $.ajax({
                     type: 'GET',
                     async: false,
@@ -114,7 +114,7 @@
 
 
                     },
-                    url: "{{ url('addQty/fetch') }}",
+                    url: ajaxURL,
 
                     success: function(data) {
 
