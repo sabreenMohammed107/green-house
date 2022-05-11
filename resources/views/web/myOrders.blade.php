@@ -38,6 +38,7 @@
                             </tr>
                         </thead>
                         <tbody>
+
                             @foreach ($orders as $index=>$order)
                             <tr>
                                 <td>
@@ -51,7 +52,8 @@
                                 </td>
                                 <td>
                                     <?php
-                                    $points_done=App\Models\Order_item::where('order_id', $order->id)->sum('points_done');
+                                    // {{ $row->quantity * $row->points_done}}
+                                    $points_done=App\Models\Order_item::where('order_id', $order->id)->sum(\DB::raw('quantity*points_done'));
 
                                    ?>
                                     <p>
