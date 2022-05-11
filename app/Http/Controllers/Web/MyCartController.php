@@ -39,7 +39,7 @@ class MyCartController extends Controller
         if ($req->ajax()) {
             $item_id = $req->item_id;
 
-            $orderItem=Order_item::where('order_id',$item_id)->first();
+            $orderItem=Order_item::where('id',$item_id)->first();
             if($orderItem){
                 $orderItem->update(['quantity' => $orderItem->quantity + 1]);
 
@@ -67,7 +67,7 @@ class MyCartController extends Controller
         if ($req->ajax()) {
             $item_id = $req->item_id;
 
-            $orderItem=Order_item::where('order_id',$item_id)->first();
+            $orderItem=Order_item::where('id',$item_id)->first();
             if($orderItem){
                 $orderItem->update(['quantity' => $orderItem->quantity - 1]);
 
