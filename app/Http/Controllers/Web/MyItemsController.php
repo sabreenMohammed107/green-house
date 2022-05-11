@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Database\QueryException;
+use File;
 class MyItemsController extends Controller
 {
     protected $object;
@@ -132,7 +134,20 @@ class MyItemsController extends Controller
     public function destroy($id)
     {
         //
-        dd('delete');
+        $row=Item::where('id',$id)->first();
+        // Delete File ..
+        $file = $row->image;
+        $file_name = public_path('uploads/items/' . $file);
+        try {
+            File::delete($file_name);
+            $row->delete();
+            return redirect()->back()->with('flash_success', 'تم الحذف بنجاح !');
+
+        } catch (QueryException $q) {
+            return redirect()->back()->withInput()->with('flash_danger', $q->getMessage());
+
+            // return redirect()->back()->with('flash_danger', 'هذه القضية مربوطه بجدول اخر ..لا يمكن المسح');
+        }
     }
 
     public function cart($id)

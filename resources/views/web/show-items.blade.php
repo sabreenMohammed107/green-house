@@ -52,7 +52,7 @@
                                         <div class="form-group">
                                             <textarea readonly name="description" id="" cols="30" rows="7" class="form-control" placeholder="Item Description">{{$row->description}}</textarea>
                                         </div>
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <div class="upload__box">
                                                 <div class="upload__btn-box">
                                                     <label class="upload__btn">
@@ -67,7 +67,7 @@
                                             </div>
 
 
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div class="form-group">
                                             {{-- <input type="submit" value="Save" class="btn btn-primary py-3 px-5"> --}}
