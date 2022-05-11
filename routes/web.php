@@ -79,8 +79,8 @@ Route::post('/user-logout', [UsersController::class,'logout'])->name('user-logou
 Route::get('/my-cart', [MyCartController::class,'index']);
 
 //addQty/fetch
-Route::get('/addQty/fetch',[MyCartController::class,'addQty'])->name('addQty/fetch');
-Route::get('/subQty/fetch',[MyCartController::class,'subQty'])->name('subQty/fetch');
+Route::get('addQty/fetch',[MyCartController::class,'addQty'])->name('addQty/fetch');
+Route::get('subQty/fetch',[MyCartController::class,'subQty'])->name('subQty/fetch');
 Route::get('del/orderItem',[MyCartController::class,'delOrderItem'])->name('del/orderItem');
 
 Route::post('/place-order', [MyCartController::class,'palceOrder'])->name('place-order');
