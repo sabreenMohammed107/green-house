@@ -120,7 +120,6 @@
                         alert("vcv"+ data)
                         $('#rows').html(data);
 
-                        console.log(rowSS);
 
                     },
 
@@ -150,7 +149,6 @@ alert("vv"+ error)
 
                         $('#rows').html(data);
 
-                        console.log(rowSS);
 
                     },
 
