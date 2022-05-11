@@ -88,7 +88,7 @@
              animateOut: 'fadeOut',
              animateIn: 'fadeIn',
              autoplay: true,
-             loop: true,
+             loop: false,
              items: 1,
              margin: 0,
              stagePadding: 0,
