@@ -21,7 +21,7 @@
                                     <th data-field="id">#</th>
                                     <th>صورة</th>
 
-                                        <th>العنوان   </th>
+                                        {{-- <th>العنوان   </th> --}}
 
                                         <th>التاريخ  </th>
                                         <th> النص  </th>
@@ -36,7 +36,7 @@
                                 <td>{{ $index + 1 }}</td>
                                 <td><img src="{{ asset('uploads/blogs') }}/{{ $row->image }}" width="100" height="100"> </td>
 
-                                <td> {!!  substr(strip_tags($row->title), 0, 150) !!}</td>
+                                {{-- <td> {!!  substr(strip_tags($row->title), 0, 150) !!}</td> --}}
 
                                 <td>{{date('d-m-Y', strtotime($row->blog_date))}}</td>
 

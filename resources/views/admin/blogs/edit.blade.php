@@ -27,13 +27,13 @@
 
 
 
-                        <div class="col-sm-12">
+                        {{-- <div class="col-sm-12">
                             <div class="form-group">
                                 <label  >{{ __('  العنوان  ') }}</label>
                                 <textarea class="form-control summernote" name="title" > {{$row->title}}</textarea>
 
                                 </div>
-                            </div>
+                            </div> --}}
 
 
 

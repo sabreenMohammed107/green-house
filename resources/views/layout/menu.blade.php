@@ -81,7 +81,7 @@
             <ul class="treeview-menu">
                 <li>
                      <a href="{{ route('admin-item-category.index') }}"><i class="fa fa-circle-o text-red"></i> <span> تصنيفات المنتجات</span></a>
-                    <li><a href="{{ route('admin-items.index') }}"><i class="fa fa-circle-o"></i>  المنتجات</a></li>
+                    {{-- <li><a href="{{ route('admin-items.index') }}"><i class="fa fa-circle-o"></i>  المنتجات</a></li> --}}
 
 
             </ul>

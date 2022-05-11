@@ -45,10 +45,10 @@
                                             </a>
 
 
-                                            <a href="#del{{ $row->id }}" data-toggle="modal"
+                                            {{-- <a href="#del{{ $row->id }}" data-toggle="modal"
                                                 data-target="#del{{ $row->id }}">
                                                 <p class="fa  fa-times"></p>
-                                            </a>
+                                            </a> --}}
 
 
                                         </div>

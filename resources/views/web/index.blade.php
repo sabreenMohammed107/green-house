@@ -342,7 +342,7 @@
                                         3</a></div> --}}
                             </div>
                             <div class="desc pl-3">
-                                <h3 class="heading"><a href="#">{!! str_limit($blog->text ?? '', $limit = 100, $end = '...') !!}</a></h3>
+                                <h3 class="heading">{!! str_limit($blog->text ?? '', $limit = 100, $end = '...') !!}</h3>
                             </div>
                         </div>
                     </div>
