@@ -32,7 +32,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $rows=Order::where('status_id',1)->orderBy("created_at", "Desc")->get();
+        $rows=Order::where('status_id',2)->orderBy("created_at", "Desc")->get();
 
         return view($this->viewName.'index', compact('rows'));
     }
@@ -63,6 +63,12 @@ class OrderController extends Controller
           $item->update([
               'points_done'=>$request->get('points_done' . $i),
           ]);
+
+          $order=Order::where('id',$item->order_id)->first();
+          $order->update([
+            'status_id '=>2,
+        ]);
+
         }
         return redirect()->route($this->routeName.'index')->with('flash_success', 'تم الحفظ بنجاح');
     }
