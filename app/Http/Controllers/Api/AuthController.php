@@ -41,7 +41,7 @@ class AuthController extends BaseController
 
             $input = $request->all();
             $input['password'] = bcrypt($input['password']);
-
+            $input['type']=0;
             $user = User::create($input);
             $user->accessToken = $user->createToken('MyApp')->accessToken;
 
