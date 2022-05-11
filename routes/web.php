@@ -20,7 +20,7 @@ use App\Http\Controllers\Web\IndexController;
 use App\Http\Controllers\Web\MyCartController;
 use App\Http\Controllers\Web\MyItemsController;
 use App\Http\Controllers\Web\MyOrderController;
-use App\Http\Controllers\web\MyPointController;
+use App\Http\Controllers\Web\MyPointController;
 use App\Http\Controllers\Web\PartnersController;
 use App\Http\Controllers\Web\TermsController;
 use App\Http\Controllers\Web\UsersController;
