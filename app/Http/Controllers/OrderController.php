@@ -66,7 +66,7 @@ class OrderController extends Controller
 
           $order=Order::where('id',$item->order_id)->first();
           $order->update([
-            'status_id'=>2,
+            'status_id'=>1,
         ]);
 
         }
