@@ -51,7 +51,7 @@ class MyCartController extends Controller
             }
         }
 
-            $ajaxComponent = view('web.myCartTable', [
+            $ajaxComponent = view('web.mycartTable', [
                 'carts' => $carts,
 
 
@@ -79,7 +79,7 @@ class MyCartController extends Controller
             }
         }
 
-            $ajaxComponent = view('web.myCartTable', [
+            $ajaxComponent = view('web.mycartTable', [
                 'carts' => $carts,
 
 

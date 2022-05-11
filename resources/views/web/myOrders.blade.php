@@ -52,7 +52,7 @@
                                 </td>
                                 <td>
                                     <?php
-                                    // {{ $row->quantity * $row->points_done}}
+
                                     $points_done=App\Models\Order_item::where('order_id', $order->id)->sum(\DB::raw('quantity*points_done'));
 
                                    ?>

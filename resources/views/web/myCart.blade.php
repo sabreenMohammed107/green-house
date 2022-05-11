@@ -117,7 +117,7 @@
                     url: ajaxURL,
 
                     success: function(data) {
-                        alert("error>>"+data)
+
                         $('#rows').html(data);
 
 
@@ -125,7 +125,7 @@
                     },
 
                     error: function(request, status, error) {
-alert("error")
+
 
                     }
                 });
