@@ -26,7 +26,7 @@
                         <div class="col-sm-6">
                         <div class="form-group">
                             <label  >{{ __(' تليفون') }}</label>
-                                <input type="text" id="newTitle" name="fax" value="{{$row->fax}}" class="form-control"
+                                <input type="text" id="newTitle" name="phone" value="{{$row->phone}}" class="form-control"
                                    placeholder=" تليفون">
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                         <div class="col-sm-6">
                         <div class="form-group">
                             <label  >{{ __(' فاكس') }}</label>
-                                <input type="text" id="newTitle" name="phone" value="{{$row->phone}}" class="form-control"
+                                <input type="text" id="newTitle" name="fax" value="{{$row->fax}}" class="form-control"
                                    placeholder=" فاكس">
                             </div>
                         </div>
