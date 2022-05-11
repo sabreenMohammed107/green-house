@@ -114,19 +114,19 @@
 
 
                     },
-                    url: "/addQty/fetch",
-
+                    url: "{{ url('addQty/fetch') }}",
 
                     success: function(data) {
-                        alert("vcv"+ data)
+
                         $('#rows').html(data);
+
 
 
                     },
 
                     error: function(request, status, error) {
 
-alert("vv"+ error)
+
                     }
                 });
     }
@@ -144,10 +144,12 @@ alert("vv"+ error)
 
 
                     },
-                    url: "/subQty/fetch",
+                    url: "{{ url('subQty/fetch') }}",
+
                     success: function(data) {
 
                         $('#rows').html(data);
+
 
 
                     },
