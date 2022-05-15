@@ -84,6 +84,6 @@ class User extends Authenticatable
 
     public function prize()
     {
-        return $this->belongsToMany('App\Models\Prizes_point', 'user_prizes','prize_id','user_id');
+        return $this->belongsToMany('App\Models\Prizes_point', 'user_prizes','user_id','prize_id');
     }
 }
