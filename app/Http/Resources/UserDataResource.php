@@ -24,7 +24,7 @@ class UserDataResource extends JsonResource
             'mobile'=> $this->mobile,
             'current_points'=> $this->current,
             'prize'=>PointsResource::collection(
-                User_prize::where('prize_id', '=' , $this->id)
+                User_prize::where('user_id', '=' , $this->user_id)
                 ->get()
             ),
             'accessToken' => $this->accessToken,
