@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\ItemController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\PrizesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -40,4 +41,14 @@ Route::post('place-order',  [CartController::class,'placeOrder']);
 //order
 Route::get('show-my-orders', [OrderController::class, 'index']);
 Route::get('show-order-details/{id}', [OrderController::class, 'singleOrder']);
+//confirm-order
+Route::get('confirm-order/{id}', [OrderController::class, 'confirm']);
+//reject-order
+Route::get('reject-order/{id}', [OrderController::class, 'reject']);
+
+
+//order
+Route::get('all-prizes', [PrizesController::class, 'index']);
+Route::get('get-my-prize/{id}', [PrizesController::class, 'getPoint']);
+
 });

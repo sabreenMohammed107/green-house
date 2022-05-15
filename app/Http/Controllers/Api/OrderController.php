@@ -56,4 +56,30 @@ public function singleOrder($id){
 
 }
 
+public function confirm($id){
+    $myOrder = Order::where('id', $id)->first();
+    if ($myOrder) {
+        $myOrder->update([
+            'status_id'=>3,
+          ]);
+        return $this->sendResponse(OrderResource::collection($myOrder), 'Confirming order');
+    } else {
+        return $this->sendError('some thing error in Order/ Order not Found');
+    }
+}
+
+
+public function reject($id){
+    $myOrder = Order::where('id', $id)->first();
+    if ($myOrder) {
+        $myOrder->update([
+            'status_id'=>5,
+          ]);
+        return $this->sendResponse(OrderResource::collection($myOrder), 'reject order');
+    } else {
+        return $this->sendError('some thing error in Order/ Order not Found');
+    }
+
+}
+
 }
