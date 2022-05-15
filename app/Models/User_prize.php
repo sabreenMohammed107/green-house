@@ -20,4 +20,8 @@ class User_prize extends Model
         return $this->belongsTo('App\Models\Prizes_point', 'prize_id');
     }
 
+    public function user(){
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
+
 }

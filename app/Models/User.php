@@ -80,4 +80,10 @@ class User extends Authenticatable
 
         return $postivePoints - $negative; // Calculates the tax value every time that I call "$item->tax" based on total value of each item.
     }
+
+
+    public function prize()
+    {
+        return $this->belongsToMany('App\Prizes_point', 'user_id');
+    }
 }

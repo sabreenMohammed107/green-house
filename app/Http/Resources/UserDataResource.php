@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Resources;
 
+use App\Models\User_prize;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserDataResource extends JsonResource
@@ -22,6 +23,10 @@ class UserDataResource extends JsonResource
             'address' => $this->address ?? '',
             'mobile'=> $this->mobile,
             'current_points'=> $this->current,
+            'prize'=>PointsResource::collection(
+                User_prize::where('prize_id', '=' , $this->id)
+                ->get()
+            ),
             'accessToken' => $this->accessToken,
         ];
     }
