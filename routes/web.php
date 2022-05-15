@@ -90,7 +90,8 @@ Route::post('/place-order', [MyCartController::class,'palceOrder'])->name('place
 //orders
 Route::get('/my-orders', [MyOrderController::class,'index']);
 Route::get('order_details/{id}',  [MyOrderController::class,'details'])->name('order_details');
-
+Route::get('order_confirming/{id}',  [MyOrderController::class,'confirm'])->name('order_confirming');
+Route::get('order_rejecting/{id}',  [MyOrderController::class,'reject'])->name('order_rejecting');
 //items
 Route::resource('/my-items', MyItemsController::class);
 Route::get('items-cart/{id}',  [MyItemsController::class,'cart'])->name('items-cart');

@@ -21,6 +21,7 @@ class UserDataResource extends JsonResource
             'city'=> $this->city ?? '',
             'address' => $this->address ?? '',
             'mobile'=> $this->mobile,
+            'current_points'=> $this->current,
             'accessToken' => $this->accessToken,
         ];
     }

@@ -24,9 +24,9 @@ class MyOrderController extends Controller
     public function index()
     {
         $carts = [];
-        $orders = Order::where('user_id', Auth::user()->id)->where('status_id','!=', 4)->get();
+        $orders = Order::where('user_id', Auth::user()->id)->whereIN('status_id', [1,2,3])->get();
 
-        $cart = Order::where('user_id', Auth::user()->id)->where('status_id','!=', 4)->first();
+        $cart = Order::where('user_id', Auth::user()->id)->whereIN('status_id', [1,2,3])->first();
         // if ($cart) {
         //     $orders = Order_item::where('order_id', $cart->id)->get();
         // }
@@ -37,5 +37,26 @@ public function details($id){
 $order=Order::where('id',$id)->first();
 $items = Item::where('user_id', Auth::user()->id)->get();
 return view('web.myOrderDetails', compact('order','items'));
+}
+
+
+
+public function confirm($id){
+//conOrderPoint
+$order=Order::where('id',$id)->first();
+$order->update([
+  'status_id'=>3,
+]);
+return view('web.conOrderPoint');
+}
+
+
+public function reject($id){
+    //rejOrderPoint
+    $order=Order::where('id',$id)->first();
+    $order->update([
+      'status_id'=>5,
+    ]);
+    return view('web.rejOrderPoint');
 }
 }

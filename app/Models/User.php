@@ -71,7 +71,7 @@ class User extends Authenticatable
 
     public function getCurrentAttribute()
     {
-        $orders = Order::where('user_id', $this->id)->get();
+        $orders = Order::where('user_id', $this->id)->where('status_id', 3)->get();
         $postivePoints = 0;
         foreach ($orders as $order) {
             $postivePoints += Order_item::where('order_id', $order->id)->sum(\DB::raw('quantity*points_done'));

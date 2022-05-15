@@ -19,7 +19,7 @@ class CartController extends BaseController
     {
         if (Auth::guard('api')->check()) {
             $user = Auth::guard('api')->user();
-            $myCart = Order::where('user_id', $user->id)->where('status_id', 2)->first();
+            $myCart = Order::where('user_id', $user->id)->where('status_id', 4)->first();
             if ($myCart) {
                 $items = Order_item::where('order_id', $myCart->id)->get();
                 return $this->sendResponse(OrderItemsResource::collection($items), 'get all Items');
@@ -42,7 +42,7 @@ class CartController extends BaseController
         ]);
 //exist product
         $user = Auth::user();
-        $exist = Order::where('status_id', "=", 2)->where('user_id', $user->id)->first();
+        $exist = Order::where('status_id', "=", 4)->where('user_id', $user->id)->first();
         if ($exist) {
             $row = Order_item::where('order_id', $exist->id)->where('item_id', $request->item_id)->first();
             if ($row) {
@@ -65,7 +65,7 @@ try
             $newOrder = new Order();
 
             $newOrder->order_date = Carbon::parse(now());
-            $newOrder->status_id = 2;
+            $newOrder->status_id = 4;
             $newOrder->user_id = $user->id;
             $newOrder->save();
 
@@ -118,7 +118,7 @@ try
         }
         $row = Order::where('id', $request->order_id)->first();
         if($row){
-            $row->update(['status_id' => 1]);
+            $row->update(['status_id' => 2]);
             return $this->sendResponse($row, ' Order is waitpoints.');
         }else{
 

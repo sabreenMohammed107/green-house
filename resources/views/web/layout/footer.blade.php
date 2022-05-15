@@ -31,7 +31,7 @@
                         <ul class="list-unstyled">
                             <li><a href="{{url('/about')}}">About Us</a></li>
                             <li><a href="#">Practice Areas</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="{{ url('/contact') }}">Contact Us</a></li>
                             <li><a href="#">Terms &amp; Conditions</a></li>
                             <li><a href="#">FAQ</a></li>
                         </ul>

@@ -64,6 +64,16 @@
                                     <div class="btn-group mr-2" role="group" aria-label="First group">
                                         <a href="{{ route('order_details', $order->id) }}" class="btn btn-success" title="view"><i class="fa-solid fa-eye"></i> order details</a>
                                     </div>
+                                    @if($order->status_id == 1)
+                                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                                        <a href="{{ route('order_confirming', $order->id) }}" class="btn btn-success" title="view"><i class="fa-solid fa-check"></i> Confirm  </a>
+                                    </div>
+                                    @endif
+                                    @if($order->status_id == 1)
+                                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                                        <a href="{{ route('order_rejecting', $order->id) }}" class="btn btn-danger" title="view"><i class="fa-solid fa-xmark"></i> Reject  </a>
+                                    </div>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

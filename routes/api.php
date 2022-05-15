@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\ItemController;
+use App\Http\Controllers\Api\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,4 +36,8 @@ Route::get('show-cart', [CartController::class, 'index']);
 Route::get('add-qty/{id}',  [CartController::class,'AddQuantity']);
 Route::get('sub-qty/{id}',  [CartController::class,'SubstractQuantity']);
 Route::post('place-order',  [CartController::class,'placeOrder']);
+
+//order
+Route::get('show-my-orders', [OrderController::class, 'index']);
+Route::get('show-order-details/{id}', [OrderController::class, 'singleOrder']);
 });

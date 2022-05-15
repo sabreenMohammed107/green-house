@@ -13,7 +13,7 @@
                             <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
                                 {!! $homeSlider->title ?? '' !!}</h1>
                             <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"> {!! $homeSlider->text ?? '' !!}</p>
-                            <p><a href="#" class="btn btn-white btn-outline-white px-4 py-3 mt-3">Contact US</a></p>
+                            <p><a href="{{ url('/contact') }}" class="btn btn-white btn-outline-white px-4 py-3 mt-3">Contact US</a></p>
                         </div>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                         </div>
                     </div>
                     <div class="pl-md-5 ml-md-5 mb-5">
-                        <p>{!! $company->ocerview !!} </p><a href="about.html" class="btn-custom hvr-skew-forward">Learn More
+                        <p>{!! $company->ocerview !!} </p><a href="{{ url('/about') }}" class="btn-custom hvr-skew-forward">Learn More
                             <span class="ion-ios-arrow-forward"></span></a></p>
                     </div>
                 </div>
@@ -332,8 +332,8 @@
                 @foreach ($blogs as $blog)
                 <div class="col-md-4 ftco-animate">
                     <div class="blog-entry box-shadow2">
-                        <a href="blog-single.html" class="block-20" style="background-image: url('{{ asset('uploads/blogs') }}/{{ $blog->image ?? '' }}');">
-                        </a>
+                        <span class="block-20" style="background-image: url('{{ asset('uploads/blogs') }}/{{ $blog->image ?? '' }}');">
+                        </span>
                         <div class="text d-flex py-4">
                             <div class="meta mb-3">
                                 <div><a href="#">{{date('Y-m-d', strtotime($blog->blog_date))}}</a></div>
