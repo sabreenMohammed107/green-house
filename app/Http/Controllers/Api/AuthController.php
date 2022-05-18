@@ -65,7 +65,7 @@ class AuthController extends BaseController
         $validator = Validator::make($request->all(), [
             'email' => 'required',
             'password' => 'required',
-            'device_token' => 'required',
+            // 'device_token' => 'required',
         ]);
 
         if ($validator->fails()) {
