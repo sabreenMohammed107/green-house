@@ -16,6 +16,7 @@ class ItemsResource extends JsonResource
 
         return [
 
+            'id' => $this->id ?? '',
             'name' => $this->name ?? '',
             'image' =>  $this->image ? asset('uploads/items/' . $this->image) : asset('adminassets/dist/img/avatar.png') ,
             'vedio_url' => $this->vedio_url ?? '',
