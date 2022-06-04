@@ -39,13 +39,128 @@
                                             <input type="text" readonly name="name" value="{{$row->name}}" class="form-control" placeholder="Item Title">
                                         </div>
                                         <div class="form-group">
-                                            <select name="category_id" disabled  class="form-control">
+                                            <select name="category_id" disabled id="player_type" class="form-control">
                                                 <option value="">type</option>
                                                 @foreach ($categories as $cat)
-                                                <option value="{{$cat->id}}"  {{ $cat->id == $row->category_id  ? 'selected' : '' }}>{{$cat->name}}</option>
+                                                    <option value="{{ $cat->id }}"
+                                                        {{ $cat->id == $row->category_id ? 'selected' : '' }}>
+                                                        {{ $cat->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
+                                        {{-- add New divs --}}
+                                        <div class="form-group">
+                                            <div id="experiance">
+                                                <?php
+                                                        foreach($idsCat1 as $key=>$id){
+                                                            $list1 = App\Models\Features_list::where('item_category_features_id',$id)->whereHas('feature', function ($q) {
+                                                                $q->where('item_category_id', 1);
+                                                            })->get();
+                                                            $val= App\Models\Items_features_value::where('item_category_features_id',$id)->where('item_id',$row->id)->first();
+                                                            ?>
+                                                <input type="hidden" name="item_category_features_id1_{{ $key + 1 }}"
+                                                    value="{{ $id }}">
+                                                <input type="text"  class="form-control" readonly value="{{ $val->list->name ?? '' }}  ">
+                                                {{-- <select name="list1_{{ $key + 1 }}" class="form-control">
+                                                    <option value="">select</option>
+                                                    @foreach ($list1 as $type)
+                                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                                    @endforeach
+
+                                                </select> --}}
+
+
+                                                <?php
+                                            }
+                                                ?>
+
+
+
+                                            </div>
+                                            <div id="teams">
+                                                <?php
+                                                        foreach($idsCat2 as $key=>$id){
+                                                            $list2 = App\Models\Features_list::where('item_category_features_id',$id)->whereHas('feature', function ($q) {
+                                                                $q->where('item_category_id', 2);
+                                                            })->get();
+                                                            $val= App\Models\Items_features_value::where('item_category_features_id',$id)->where('item_id',$row->id)
+                                                            ->first();
+                                                            ?>
+                                                <input type="text" class="form-control" readonly value="{{ $val->list->name ?? '' }}  ">
+
+                                                <input type="hidden" name="item_category_features_id2_{{ $key + 1 }}"
+                                                    value="{{ $id }}">
+                                                {{-- <select name="list2_{{ $key + 1 }}" class="form-control">
+                                                    <option value="">select</option>
+                                                    @foreach ($list2 as $type)
+                                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                                    @endforeach
+
+                                                </select> --}}
+
+
+                                                <?php
+                                            }
+                                                ?>
+
+
+                                            </div>
+                                            <div id="ages">
+                                                <?php
+                                                        foreach($idsCat3 as $key=>$id){
+                                                            $list3 = App\Models\Features_list::where('item_category_features_id',$id)->whereHas('feature', function ($q) {
+                                                                $q->where('item_category_id', 3);
+                                                            })->get();
+                                                            $val= App\Models\Items_features_value::where('item_category_features_id',$id)->where('item_id',$row->id)
+                                                            ->first();
+                                                            ?>
+                                                <input type="text" class="form-control" readonly value="{{ $val->list->name ?? '' }}  ">
+
+                                                <input type="hidden" name="item_category_features_id3_{{ $key + 1 }}"
+                                                    value="{{ $id }}">
+                                                {{-- <select name="list3_{{ $key + 1 }}" class="form-control">
+                                                    <option value="">select</option>
+                                                    @foreach ($list3 as $type)
+                                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                                    @endforeach
+
+                                                </select> --}}
+
+
+                                                <?php
+                                            }
+                                                ?>
+
+
+                                            </div>
+                                            <div id="surname">
+                                                <?php
+                                                        foreach($idsCat4 as $key=>$id){
+                                                            $list4 = App\Models\Features_list::where('item_category_features_id',$id)->whereHas('feature', function ($q) {
+                                                                $q->where('item_category_id', 4);
+                                                            })->get();
+                                                            $val= App\Models\Items_features_value::where('item_category_features_id',$id)->where('item_id',$row->id)
+                                                            ->first();
+                                                            ?>
+                                                <input type="text" class="form-control" readonly value="{{ $val->list->name ?? '' }}  ">
+
+                                                <input type="hidden" name="item_category_features_id4_{{ $key + 1 }}"
+                                                    value="{{ $id }}">
+                                                {{-- <select name="list4_{{ $key + 1 }}" class="form-control">
+                                                    <option value="">select</option>
+                                                    @foreach ($list4 as $type)
+                                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                                    @endforeach
+
+                                                </select> --}}
+
+                                                <?php
+                                            }
+                                                ?>
+
+                                            </div>
+                                        </div>
+                                        {{-- End New Divs --}}
                                         <div class="form-group">
                                             <input readonly type="url" name="vedio_url" value="{{$row->vedio_url}}"  class="form-control" placeholder="Youtube Link">
                                         </div>
@@ -123,3 +238,41 @@
     </section>
 
     @endsection
+
+
+    @section('scripts')
+    <script>
+        $(document).ready(function() {
+            toggleFields();
+            $("#player_type").change(function() {
+
+                toggleFields();
+            });
+        });
+
+        function toggleFields() {
+
+            if ($("#player_type").val() == 1) {
+                $("#experiance").show();
+            } else {
+                $("#experiance").hide();
+            }
+            if ($("#player_type").val() == 2) {
+                $("#teams").show();
+            } else {
+                $("#teams").hide();
+            }
+            if ($("#player_type").val() == 3) {
+                $("#ages").show();
+            } else {
+                $("#ages").hide();
+            }
+            if ($("#player_type").val() == 4) {
+                $("#surname").show();
+            } else {
+                $("#surname").hide();
+            }
+        }
+    </script>
+@endsection
+

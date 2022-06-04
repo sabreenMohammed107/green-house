@@ -24,6 +24,7 @@
                         <th>تاريخ الاوردر </th>
 
                         <th>الحالة</th>
+                        <th>اجمالي النقاط</th>
 
 
 
@@ -54,6 +55,14 @@
 
                                 <td>
                                     {!! $row->status->status ?? '' !!}
+                                </td>
+
+
+                                <td>
+                                    <?php
+                                    $point=App\Models\Order_item::where('order_id',$row->id)->sum(\DB::raw('quantity*points_done'));
+                                    ?>
+                                    {!! $point ?? '' !!}
                                 </td>
 
 

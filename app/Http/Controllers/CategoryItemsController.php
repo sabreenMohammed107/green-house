@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Features_list;
 use App\Models\Item_category;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
@@ -76,7 +77,12 @@ class CategoryItemsController extends Controller
      */
     public function show($id)
     {
-        //
+        $row=Item_category::where('id',$id)->first();
+        $lists=Features_list::distinct('item_category_features_id')->whereHas('feature', function ($q) use ($id){
+            $q->where('item_category_id', $id);
+        })->get();
+// dd($lists);
+        return view($this->viewName.'show',compact('row','lists'));
     }
 
     /**

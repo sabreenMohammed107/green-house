@@ -3,16 +3,20 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Features_list;
 use App\Models\Item;
 use App\Models\Item_category;
+use App\Models\Item_category_feature;
+use App\Models\Items_features_value;
 use App\Models\Order;
 use App\Models\Order_item;
+use Carbon\Carbon;
+use File;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-use Illuminate\Database\QueryException;
-use File;
+
 class MyItemsController extends Controller
 {
     protected $object;
@@ -44,14 +48,27 @@ class MyItemsController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     * _
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
         $items = Item::where('user_id', Auth::user()->id)->get();
         $categories = Item_category::all();
-        return view('web.create-items', compact('items', 'categories'));
+        $idsCat1 = Item_category_feature::where('item_category_id', 1)->pluck('id');
+        $idsCat2 = Item_category_feature::where('item_category_id', 2)->pluck('id');
+        $idsCat3 = Item_category_feature::where('item_category_id', 3)->pluck('id');
+        $idsCat4 = Item_category_feature::where('item_category_id', 4)->pluck('id');
+
+
+
+
+
+
+        //end
+        return view('web.create-items', compact('items', 'categories',
+            'idsCat1', 'idsCat2', 'idsCat3', 'idsCat4',
+          ));
     }
 
     /**
@@ -71,7 +88,50 @@ class MyItemsController extends Controller
         }
 
         $input['user_id'] = Auth::user()->id;
-        Item::create($input);
+        $item=Item::create($input);
+        //store items_features_values
+        $i=0;
+        $values=[
+            'item_id'=>$item->id,
+                    ];
+                    if($request->get('category_id')==1){
+
+                        for($i==0;$i<=3;$i++){
+                            $values['item_category_features_id']=$request->get('item_category_features_id1_'.$i+1);
+                            $values['feature_list_id']=$request->get('list1_'.$i+1);
+                            $vv=Items_features_value::create($values);
+                        }
+
+                    }
+                        elseif($request->get('category_id')==2){
+
+                            for($i==0;$i<=3;$i++){
+                                $values['item_category_features_id']=$request->get('item_category_features_id2_'.$i+1);
+                                $values['feature_list_id']=$request->get('list2_'.$i+1);
+                                $vv=Items_features_value::create($values);
+                            }
+
+                        }
+
+                            elseif($request->get('category_id')==3){
+
+                                for($i==0;$i<=3;$i++){
+                                    $values['item_category_features_id']=$request->get('item_category_features_id3_'.$i+1);
+                                    $values['feature_list_id']=$request->get('list3_'.$i+1);
+                                    $vv=Items_features_value::create($values);
+                                }
+
+                            }
+                                elseif($request->get('category_id')==4){
+
+                                    for($i==0;$i<=3;$i++){
+                                        $values['item_category_features_id']=$request->get('item_category_features_id4_'.$i+1);
+                                        $values['feature_list_id']=$request->get('list4_'.$i+1);
+                                        $vv=Items_features_value::create($values);
+                                    }
+
+
+                    }
         return redirect()->route($this->routeName . 'index')->with('flash_success', 'تم الحفظ بنجاح');
     }
 
@@ -83,10 +143,15 @@ class MyItemsController extends Controller
      */
     public function show($id)
     {
-        $row=Item::where('id',$id)->first();
+        $row = Item::where('id', $id)->first();
         $items = Item::where('user_id', Auth::user()->id)->get();
         $categories = Item_category::all();
-        return view('web.show-items', compact('row','items', 'categories'));
+        $idsCat1 = Item_category_feature::where('item_category_id', 1)->pluck('id');
+        $idsCat2 = Item_category_feature::where('item_category_id', 2)->pluck('id');
+        $idsCat3 = Item_category_feature::where('item_category_id', 3)->pluck('id');
+        $idsCat4 = Item_category_feature::where('item_category_id', 4)->pluck('id');
+        return view('web.show-items', compact('row', 'items', 'categories',
+        'idsCat1','idsCat2','idsCat3','idsCat4'));
     }
 
     /**
@@ -97,10 +162,17 @@ class MyItemsController extends Controller
      */
     public function edit($id)
     {
-        $row=Item::where('id',$id)->first();
+        $row = Item::where('id', $id)->first();
         $items = Item::where('user_id', Auth::user()->id)->get();
         $categories = Item_category::all();
-        return view('web.edit-items', compact('row','items', 'categories'));
+        $idsCat1 = Item_category_feature::where('item_category_id', 1)->pluck('id');
+        $idsCat2 = Item_category_feature::where('item_category_id', 2)->pluck('id');
+        $idsCat3 = Item_category_feature::where('item_category_id', 3)->pluck('id');
+        $idsCat4 = Item_category_feature::where('item_category_id', 4)->pluck('id');
+
+        return view('web.edit-items', compact('row', 'items', 'categories',
+        'idsCat1','idsCat2','idsCat3','idsCat4'
+    ));
     }
 
     /**
@@ -134,7 +206,7 @@ class MyItemsController extends Controller
     public function destroy($id)
     {
         //
-        $row=Item::where('id',$id)->first();
+        $row = Item::where('id', $id)->first();
         // Delete File ..
         $file = $row->image;
         $file_name = public_path('uploads/items/' . $file);
@@ -144,7 +216,7 @@ class MyItemsController extends Controller
             return redirect()->back()->with('flash_success', 'تم الحذف بنجاح !');
 
         } catch (QueryException $q) {
-            return redirect()->back()->withInput()->with('flash_danger','this Item Related with another tables ');
+            return redirect()->back()->withInput()->with('flash_danger', 'this Item Related with another tables ');
 
             // return redirect()->back()->with('flash_danger', 'هذه القضية مربوطه بجدول اخر ..لا يمكن المسح');
         }
@@ -172,37 +244,34 @@ class MyItemsController extends Controller
 
         } else {
 //create order & details
-try
-{
-    // Disable foreign key checks!
-    DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-            $newOrder = new Order();
+            try
+            {
+                // Disable foreign key checks!
+                DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+                $newOrder = new Order();
 
-            $newOrder->order_date = Carbon::parse(now());
-            $newOrder->status_id = 4;
-            $newOrder->user_id = $user->id;
-            $newOrder->save();
+                $newOrder->order_date = Carbon::parse(now());
+                $newOrder->status_id = 4;
+                $newOrder->user_id = $user->id;
+                $newOrder->save();
 
-            $newItem = new Order_item();
+                $newItem = new Order_item();
 
-            $newItem->order_id = $newOrder->id;
-            $newItem->item_id = $id;
-            $newItem->quantity = 1;
-            $newItem->save();
-            DB::commit();
-            // Enable foreign key checks!
-            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-            // Display a successful message ...
-            return view('web.addCart');
+                $newItem->order_id = $newOrder->id;
+                $newItem->item_id = $id;
+                $newItem->quantity = 1;
+                $newItem->save();
+                DB::commit();
+                // Enable foreign key checks!
+                DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+                // Display a successful message ...
+                return view('web.addCart');
 
-
-
-        } catch (\Exception$e) {
-            DB::rollback();
-            return redirect()->back()->with('flash_success', "Error");
+            } catch (\Exception$e) {
+                DB::rollback();
+                return redirect()->back()->with('flash_success', "Error");
+            }
         }
-        }
-
 
     }
 

@@ -20,8 +20,8 @@
             <?php
             $counterrrr = 1;
             ?>
-             <form action="{{ route('admin-orders.store') }}" method="post" enctype="multipart/form-data">
-                {{ csrf_field() }}
+             {{-- <form action="{{ route('admin-orders.store') }}" method="post" enctype="multipart/form-data">
+                {{ csrf_field() }} --}}
             <div class="box-body">
                 <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-resizable="true"
                     data-cookie="true" data-show-export="true" data-locale="ar-SA" style="direction: rtl">
@@ -68,41 +68,28 @@
                                     {!! $row->quantity ?? '' !!}
                                 </td>
 
-                                <td>
-                                    <input type="text" name="points_done{{ $counter }}"
-                                    value="{{$row->points_done}}"
-                                 class="form-control" id=""
-                                    placeholder="Enter Points Num">
 
-                                </td>
+                                    <td>
+                                        {!! $row->points_done ?? '' !!}
+                                    </td>
+
 
 
                             </tr>
 
             </div>
-            <?php
-            ++$counter;
 
-            if ($counter > count($items)) {
-            ?>
-        @break
-
-        <?php }
-            $counterrrr++;
-
-            ?>
 
             @endforeach
             </tbody>
             </table>
-            <input type="hidden" name="counter" value="{{ $counterrrr }}">
+
 
         </div>
         <div class="box-footer">
-            <button type="submit" class="btn btn-primary">حفظ</button>
-            {{-- <button type="button" class="btn btn-danger">إلغاء</button> --}}
+            <a href="{{route('admin-orders.index')}}" class="btn btn-danger">إلغاء</a>
         </div>
-    </form>
+    {{-- </form> --}}
     </div>
     </div>
     </div>

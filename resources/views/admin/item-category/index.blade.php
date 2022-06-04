@@ -49,7 +49,9 @@
                                     <p class=" fa fa-cogs"></p>
                                 </a>
 
-
+                                <a href="{{ route('admin-item-category.show', $row->id) }}" title="rank">
+                                    <p class=" fa fa-gif">rank</p>
+                                </a>
                                 {{-- <a href="#del{{ $row->id }}" data-toggle="modal"
                                     data-target="#del{{ $row->id }}">
                                     <p class="fa  fa-times"></p>

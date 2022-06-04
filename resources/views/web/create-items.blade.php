@@ -20,7 +20,8 @@
                 <div class="col-md-7 heading-section ftco-animate text-center">
                     <span class="subheading">Items</span>
                     <h2 class="mb-4">Add New Item</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
+                        the blind texts. Separated they live in</p>
                 </div>
             </div>
             <div class="row justify-content-center mb-5 pb-3">
@@ -30,12 +31,18 @@
                             <div class="">
                                 <h1 class="text-white">Add Item</h1>
                                 <div class="insert-list">
-                                    <p><i class="fa-solid fa-1"></i> <i class="fa-solid fa-angles-right"></i> Insert Item Name </p>
-                                    <p><i class="fa-solid fa-2"></i> <i class="fa-solid fa-angles-right"></i> Insert Item Type</p>
-                                    <p><i class="fa-solid fa-3"></i> <i class="fa-solid fa-angles-right"></i> Insert Item Link</p>
-                                    <p><i class="fa-solid fa-4"></i> <i class="fa-solid fa-angles-right"></i> Insert Item Desc</p>
-                                    <p><i class="fa-solid fa-5"></i> <i class="fa-solid fa-angles-right"></i> Insert Item Photos </p>
-                                    <p><i class="fa-solid fa-6"></i> <i class="fa-solid fa-angles-right"></i> Click Save </p>
+                                    <p><i class="fa-solid fa-1"></i> <i class="fa-solid fa-angles-right"></i> Insert Item
+                                        Name </p>
+                                    <p><i class="fa-solid fa-2"></i> <i class="fa-solid fa-angles-right"></i> Insert Item
+                                        Type</p>
+                                    <p><i class="fa-solid fa-3"></i> <i class="fa-solid fa-angles-right"></i> Insert Item
+                                        Link</p>
+                                    <p><i class="fa-solid fa-4"></i> <i class="fa-solid fa-angles-right"></i> Insert Item
+                                        Desc</p>
+                                    <p><i class="fa-solid fa-5"></i> <i class="fa-solid fa-angles-right"></i> Insert Item
+                                        Photos </p>
+                                    <p><i class="fa-solid fa-6"></i> <i class="fa-solid fa-angles-right"></i> Click Save
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +50,7 @@
                             <div class="">
                                 <h1> Add New Item </h1>
                                 <p> Feel free to drop us a line below!</p>
-                                <form action="{{route('my-items.store')}}"  method="post" enctype="multipart/form-data">
+                                <form action="{{ route('my-items.store') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <h3>Insert It Now</h3>
                                     <div class="wrap">
@@ -51,15 +58,115 @@
                                             <input type="text" name="name" class="form-control" placeholder="Item Title">
                                         </div>
                                         <div class="form-group">
-                                            <select name="category_id"  class="form-control">
-                                                <option value="">type</option>
+                                            <select name="category_id" id="player_type" required class="form-control">
+                                                <option value="">select</option>
                                                 @foreach ($categories as $cat)
-                                                <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                                    <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
+                                        {{-- add New divs --}}
                                         <div class="form-group">
-                                            <input type="url" name="vedio_url" class="form-control" placeholder="Youtube Link">
+                                            <div id="experiance">
+                                                <?php
+                                                foreach($idsCat1 as $key=>$id){
+                                                    $list1 = App\Models\Features_list::where('item_category_features_id',$id)->whereHas('feature', function ($q) {
+                                                        $q->where('item_category_id', 1);
+                                                    })->get();
+                                                    ?>
+                                                <input type="hidden" name="item_category_features_id1_{{ $key + 1 }}"
+                                                    value="{{ $id }}">
+                                                <select name="list1_{{ $key + 1 }}" class="form-control">
+                                                    <option value="">select</option>
+                                                    @foreach ($list1 as $type)
+                                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                                    @endforeach
+
+                                                </select>
+
+
+                                                <?php
+                                    }
+                                        ?>
+
+
+
+                                            </div>
+                                            <div id="teams">
+                                                <?php
+                                                foreach($idsCat2 as $key=>$id){
+                                                    $list2 = App\Models\Features_list::where('item_category_features_id',$id)->whereHas('feature', function ($q) {
+                                                        $q->where('item_category_id', 2);
+                                                    })->get();
+                                                    ?>
+                                                <input type="hidden" name="item_category_features_id2_{{ $key + 1 }}"
+                                                    value="{{ $id }}">
+                                                <select name="list2_{{ $key + 1 }}" class="form-control">
+                                                    <option value="">select</option>
+                                                    @foreach ($list2 as $type)
+                                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                                    @endforeach
+
+                                                </select>
+
+
+                                                <?php
+                                    }
+                                        ?>
+
+
+                                            </div>
+                                            <div id="ages">
+                                                <?php
+                                                foreach($idsCat3 as $key=>$id){
+                                                    $list3 = App\Models\Features_list::where('item_category_features_id',$id)->whereHas('feature', function ($q) {
+                                                        $q->where('item_category_id', 3);
+                                                    })->get();
+                                                    ?>
+                                                <input type="hidden" name="item_category_features_id3_{{ $key + 1 }}"
+                                                    value="{{ $id }}">
+                                                <select name="list3_{{ $key + 1 }}" class="form-control">
+                                                    <option value="">select</option>
+                                                    @foreach ($list3 as $type)
+                                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                                    @endforeach
+
+                                                </select>
+
+
+                                                <?php
+                                    }
+                                        ?>
+
+
+                                            </div>
+                                            <div id="surname">
+                                                <?php
+                                                foreach($idsCat4 as $key=>$id){
+                                                    $list4 = App\Models\Features_list::where('item_category_features_id',$id)->whereHas('feature', function ($q) {
+                                                        $q->where('item_category_id', 4);
+                                                    })->get();
+                                                    ?>
+                                                <input type="hidden" name="item_category_features_id4_{{ $key + 1 }}"
+                                                    value="{{ $id }}">
+                                                <select name="list4_{{ $key + 1 }}" class="form-control">
+                                                    <option value="">select</option>
+                                                    @foreach ($list4 as $type)
+                                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                                    @endforeach
+
+                                                </select>
+
+                                                <?php
+                                    }
+                                        ?>
+
+                                            </div>
+                                        </div>
+                                        {{-- End New Divs --}}
+                                        <div class="form-group">
+                                            <input type="url" name="vedio_url" class="form-control"
+                                                placeholder="Youtube Link">
                                         </div>
                                         <div class="form-group">
                                             <textarea name="description" id="" cols="30" rows="7" class="form-control" placeholder="Item Description"></textarea>
@@ -68,9 +175,10 @@
                                             <div class="upload__box">
                                                 <div class="upload__btn-box">
                                                     <label class="upload__btn">
-														<span>Upload Images</span>
-														<input type="file" name="image"  data-max_length="20" class="upload__inputfile">
-													</label>
+                                                        <span>Upload Images</span>
+                                                        <input type="file" name="image" data-max_length="20"
+                                                            class="upload__inputfile">
+                                                    </label>
                                                 </div>
                                                 <div class="upload__img-wrap"></div>
                                             </div>
@@ -125,5 +233,38 @@
             </div>
         </div>
     </section>
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            toggleFields();
+            $("#player_type").change(function() {
 
-    @endsection
+                toggleFields();
+            });
+        });
+
+        function toggleFields() {
+            if ($("#player_type").val() == 1) {
+                $("#experiance").show();
+            } else {
+                $("#experiance").hide();
+            }
+            if ($("#player_type").val() == 2) {
+                $("#teams").show();
+            } else {
+                $("#teams").hide();
+            }
+            if ($("#player_type").val() == 3) {
+                $("#ages").show();
+            } else {
+                $("#ages").hide();
+            }
+            if ($("#player_type").val() == 4) {
+                $("#surname").show();
+            } else {
+                $("#surname").hide();
+            }
+        }
+    </script>
+@endsection

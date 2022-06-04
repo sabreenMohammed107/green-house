@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Resources\OrderItemsResource;
+use App\Models\Item;
 use App\Models\Order;
 use App\Models\Order_item;
 use Carbon\Carbon;
@@ -118,8 +119,17 @@ try
         }
         $row = Order::where('id', $request->order_id)->first();
         if($row){
-            $row->update(['status_id' => 2]);
-            return $this->sendResponse($row, ' Order is waitpoints.');
+                //new updating 4-6-2022
+                $items=Order_item::where('order_id',$request->order_id)->get();
+                foreach($items as $item){
+
+                   $ranks=Item::where('id',$item->item_id)->first()->rank;
+                    $item->update([
+                        'points_done'=>$ranks,
+                    ]);
+                }
+            $row->update(['status_id' => 1]);
+            return $this->sendResponse($row, ' Order is Pending.');
         }else{
 
             return $this->sendError(null, 'Error Order Not Pending!!');

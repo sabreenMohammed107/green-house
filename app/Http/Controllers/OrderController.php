@@ -32,7 +32,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $rows=Order::where('status_id',2)->orderBy("created_at", "Desc")->get();
+        $rows=Order::where('status_id','!=',4)->orderBy("created_at", "Desc")->get();
 
         return view($this->viewName.'index', compact('rows'));
     }

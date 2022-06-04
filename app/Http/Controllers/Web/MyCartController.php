@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Features_list;
 use App\Models\Item;
+use App\Models\Items_features_value;
 use App\Models\Order;
 use App\Models\Order_item;
 use Illuminate\Support\Facades\Auth;
@@ -127,7 +129,24 @@ class MyCartController extends Controller
 
         $row = Order::where('id', $req->order_id)->first();
         if($row){
-            $row->update(['status_id' => 2]);
+
+
+            //new updating 4-6-2022
+            $items=Order_item::where('order_id',$req->order_id)->get();
+            foreach($items as $item){
+
+               $ranks=Item::where('id',$item->item_id)->first()->rank;
+                $item->update([
+                    'points_done'=>$ranks,
+                ]);
+            }
+
+            $row->update([
+              'status_id'=>1,
+          ]);
+
+
+            // $row->update(['status_id' => 2]);
             return view('web.confirmation');
         }else{
 
