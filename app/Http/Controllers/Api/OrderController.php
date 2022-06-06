@@ -24,7 +24,7 @@ public function index()
     {
         if (Auth::guard('api')->check()) {
             $user = Auth::guard('api')->user();
-            $myOrders = Order::where('user_id', $user->id)->where('status_id','!=',4)->first();
+            $myOrders = Order::where('user_id', $user->id)->where('status_id','!=',4)->get();
 
                 return $this->sendResponse(OrderResource::collection($myOrders), 'get all Orders');
 
