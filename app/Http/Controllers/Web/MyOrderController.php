@@ -27,12 +27,12 @@ class MyOrderController extends Controller
         $orders = Order::where('user_id', Auth::user()->id)->whereIN('status_id', [1,2,3])->get();
 
         $cart = Order::where('user_id', Auth::user()->id)->whereIN('status_id', [1,2,3])->first();
-        // if ($cart) {
-        //     $orders = Order_item::where('order_id', $cart->id)->get();
-        // }
+
         $items = Item::where('user_id', Auth::user()->id)->get();
         return view('web.myOrders', compact('orders','items'));
     }
+
+
 public function details($id){
 $order=Order::where('id',$id)->first();
 $items = Item::where('user_id', Auth::user()->id)->get();

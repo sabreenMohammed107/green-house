@@ -24,7 +24,7 @@
                         {{-- <div class="col-sm-12">
                         <div class="form-group">
                             <label  >{{ __('  العنوان  ') }}</label>
-                            <textarea class="form-control summernote" name="title" > {{old('title')}}</textarea>
+                            <textarea class="form-control " name="title" > {{old('title')}}</textarea>
 
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <label  >{{ __('  النص  ') }}</label>
-                                <textarea class="form-control summernote" name="text">{{old('text')}}</textarea>
+                                <textarea class="form-control " name="text">{{old('text')}}</textarea>
 
 
                             </div>
@@ -46,7 +46,7 @@
                                 <div class="form-group">
                                     <label  >{{ __(' التاريخ ') }}</label>
                                     <input type="date" name="blog_date" class="form-control">
-                                    {{-- <textarea class="form-control summernote" name="sub_title" > {{old('sub_title')}}</textarea> --}}
+                                    {{-- <textarea class="form-control " name="sub_title" > {{old('sub_title')}}</textarea> --}}
 
                                     </div>
                                 </div>

@@ -26,7 +26,7 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <label  >{{ __(' عن الشركة  ') }}</label>
-                                <textarea class="form-control summernote" name="ocerview">{{$row->ocerview}}</textarea>
+                                <textarea class="form-control " name="ocerview">{{$row->ocerview}}</textarea>
 
 
                             </div>

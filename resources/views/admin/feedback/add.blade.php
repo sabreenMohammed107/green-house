@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <label  >{{ __(' التاريخ ') }}</label>
                             <input type="date" name="feedback_date" class="form-control">
-                            {{-- <textarea class="form-control summernote" name="sub_title" > {{old('sub_title')}}</textarea> --}}
+                            {{-- <textarea class="form-control " name="sub_title" > {{old('sub_title')}}</textarea> --}}
 
                             </div>
                         </div>

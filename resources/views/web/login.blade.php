@@ -45,9 +45,7 @@
                         color: #fff;
                         text-decoration: underline;
                         text-shadow: 0px 0px 8px #7875b5;"> Sign Up </a>
-                        {{-- <a href="#" class="social-login__icon fab fa-instagram"></a>
-                        <a href="#" class="social-login__icon fab fa-facebook"></a>
-                        <a href="#" class="social-login__icon fab fa-twitter"></a> --}}
+
                     </div>
                 </div>
             </div>

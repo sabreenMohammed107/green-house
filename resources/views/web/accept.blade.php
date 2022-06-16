@@ -27,7 +27,6 @@
                     <div class="pr-md-5 mr-md-5 text-md-left">
                         <span class="subheading">Company Confirmation</span>
                         <h2 class="mb-4">Congratulations !! , you have exchanged points for gift cards</h2>
-                        <!--<p>Cash out your Points whenever you want for your favorite gift card or get a transfer to your PayPal account.</p>-->
                     </div>
                 </div>
             </div>

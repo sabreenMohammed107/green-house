@@ -92,7 +92,7 @@
                                             <p>{{ $item->name ?? '' }}</p>
                                         </td>
                                         <td>
-                                            {{-- <p>{{ $item->description ?? '' }}</p> --}}
+
                                         </td>
                                         <td>
                                             <a href="{{ $item->vedio_url ?? '#' }}">{{ $item->vedio_url ?? '' }}</a>

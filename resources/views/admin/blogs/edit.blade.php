@@ -30,7 +30,7 @@
                         {{-- <div class="col-sm-12">
                             <div class="form-group">
                                 <label  >{{ __('  العنوان  ') }}</label>
-                                <textarea class="form-control summernote" name="title" > {{$row->title}}</textarea>
+                                <textarea class="form-control " name="title" > {{$row->title}}</textarea>
 
                                 </div>
                             </div> --}}
@@ -41,7 +41,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label  >{{ __('  النص  ') }}</label>
-                                    <textarea class="form-control summernote" name="text">{{$row->text}}</textarea>
+                                    <textarea class="form-control " name="text">{{$row->text}}</textarea>
 
 
                                 </div>
@@ -52,7 +52,7 @@
                                 <div class="form-group">
                                     <label  >{{ __(' التاريخ ') }}</label>
                                     <input type="date" name="blog_date" value="{{date('Y-m-d', strtotime($row->blog_date))}}" class="form-control">
-                                    {{-- <textarea class="form-control summernote" name="sub_title" > {{old('sub_title')}}</textarea> --}}
+                                    {{-- <textarea class="form-control " name="sub_title" > {{old('sub_title')}}</textarea> --}}
 
                                     </div>
                                 </div>
